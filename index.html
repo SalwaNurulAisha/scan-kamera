@@ -5,14 +5,24 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body style="background-color: #9dda93;">
-<div style="background-color:#385034; color: whitesmoke; font-family: 'montserrat', sans-serif; font-size: 40px; font-weight: bold; text-align: center;">
-    Scan Obat dengan Kamera</div>
-<button type="button" onclick="init()">Start</button>
+<nav>
+<div style="background-color: #52734D; color: whitesmoke; font-family: 'montserrat', sans-serif; font-size: 40px; font-weight: bold; ">
+    <div id="img1"><img src="./images/logo-eyeroom.png" style="width: 70px; margin-top: 5px; margin-bottom: 5px; margin-left: 100px;"/></div>
+</div>
+</nav>
+            
+<p style=" margin-top: 20px; margin-bottom: 20px; font-family: 'Montserrat'; font-weight:lighter; font-size: 20px; text-align: center;">Ayok scan obatmu dengan klik tombol kamera dibawah!</p>
+
+<button type="button" class="btn btn-outline-success" onclick="init()" style="display:block;margin-left:auto;margin-right:auto; margin-bottom:20px;"><img src="./images/photo-camera.png"></button>
+
+<div class="kam"><img src="./images/undraw_nature_on_screen_xkli (1).svg" style="width: 400px; display: block; margin-right: auto; margin-left: auto;"/>
+
 <div class="video_container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">
-<div id="webcam-container"></div>
-<div id="label-container"></div>
+<div id="webcam-container" style="background-color: white ;margin-top: 70px;"></div>
+<div id="label-container" style="background-color: #385034; font-family: 'montserrat'; color: white; text-align: center;"></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
@@ -39,7 +49,7 @@
 
         // Convenience function to setup a webcam
         const flip = true; // whether to flip the webcam
-        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+        webcam = new tmImage.Webcam(400, 400, flip); // width, height, flip
         await webcam.setup(); // request access to the webcam
         await webcam.play();
         window.requestAnimationFrame(loop);
@@ -58,17 +68,25 @@
         window.requestAnimationFrame(loop);
     }
 
-    // run the webcam image through the image model
+   // run the webcam image through the image model
     async function predict() {
         // predict can take in an image, video or canvas html element
         const prediction = await model.predict(webcam.canvas);
         for (let i = 0; i < maxPredictions; i++) {
-            const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
-            labelContainer.childNodes[i].innerHTML = classPrediction;
-        }
-    }
+
+            // const classPrediction =
+            // prediction[i].className + " : " + prediction[i].probability.toFixed(2)+ '%';
+
+            // labelContainer.childNodes[i].innerHTML = classPrediction;
+            if(prediction[i].probability>0.95){
+                document.getElementById('label-container').innerHTML = '<h1>'+ prediction[i].className + '</h1>' + prediction[i].probability.toFixed(2)+ '%';
+                labelContainer.childNodes[i].innerHTML = classPrediction;
+
+                    }
+                }
+            }
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
 </body>
 </html>
