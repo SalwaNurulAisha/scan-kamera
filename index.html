@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scan Obat Dengan Eyeroom</title>
+    <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body style="background-color: #9dda93;">
@@ -16,9 +16,9 @@
             
 <p style=" margin-top: 20px; margin-bottom: 20px; font-family: 'Montserrat'; font-weight:lighter; font-size: 20px; text-align: center;">Ayok scan obatmu dengan klik tombol kamera dibawah!</p>
 
-<button type="button" class="btn btn-outline-success" onclick="init()" style="display:block;margin-left:auto;margin-right:auto; margin-bottom:20px;"><img src="./images/photo-camera.png"></button>
+<button type="button" class="btn btn-outline-success" onclick="init()" style="display:block;margin-left:auto;margin-right:auto; margin-bottom:20px; width: 300px;"><img src="./images/photo-camera.png"></button>
 
-<div class="kam"><img src="./images/undraw_nature_on_screen_xkli (1).svg" style="width: 300px; display: block; margin-right: auto; margin-left: auto;"/>
+<div class="kam"><img src="./images/undraw_nature_on_screen_xkli (1).svg" style="width: 400px; display: block; margin-right: auto; margin-left: auto;"/>
 
 <div class="video_container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">
 <div id="webcam-container" style="background-color: white ;margin-top: 70px;"></div>
@@ -79,12 +79,12 @@
 
             // labelContainer.childNodes[i].innerHTML = classPrediction;
             if(prediction[i].probability>0.95){
-                document.getElementById('label-container').innerHTML = '<h1>'+ prediction[i].className + '</h1>' + prediction[i].probability.toFixed(2)+ '%';
+                document.getElementById('label-container').innerHTML = '<h3>'+ prediction[i].className + '</h3>' + prediction[i].probability.toFixed(2) * 100+ '%';
                 labelContainer.childNodes[i].innerHTML = classPrediction;
-
                     }
                 }
             }
+           
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
