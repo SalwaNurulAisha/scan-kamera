@@ -9,8 +9,12 @@
 </head>
 <body style="background-color: #DDFFBC;">
 <nav>
-<div style="background: linear-gradient(90deg, #9dda93 0%, #385034 100%); color: whitesmoke; font-family: 'haifont'; font-size: 40px; font-weight: bold; ">
-    <div id="img1"><img src="./images/logo-eyeroom.png" style="width: 70px; margin-top: 5px; margin-bottom: 5px; margin-left: 70px;"/>Eyeroom</div>
+<div style="background: linear-gradient(90deg,#385034 10%, #9dda93 100%); color: whitesmoke; font-family: 'haifont'; font-size: 20px; font-weight: bold; ">
+    <nav class="nav-scan">
+        <a href="https://eyeroom2web.netlify.app/services"><button type="button" class="btn btn-success" style="width: 100px;">Back</button></a>
+        <img src="./images/logo-eyeroom.png" style="width: 60px; margin-top: 5px; margin-bottom: 5px">Eyeroom</img>
+    </nav>
+    
 </div>
 </nav>
             
@@ -98,6 +102,26 @@
   #img1 {
       font-family: 'haifont';
       font-size: 2rem;
+  }
+  .btn-desc {
+      display: block;
+      justify-content: flex-end;
+      width: 400px;
+  }
+  .nav-scan img {
+        margin-left: 850px;
+      }
+      .nav-scan a {
+          margin-left: 100px;
+      }
+
+  @media screen and (max-width: 500px){
+      .nav-scan img {
+          margin-left: 80px;
+      }
+      .nav-scan a {
+          margin-left: 10px;
+      }
   }
 </style>
 </html>
