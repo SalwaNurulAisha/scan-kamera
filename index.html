@@ -4,37 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scan Obat Dengan Kamera</title>
+    <title>Scanning</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body style="background-color: #DDFFBC;">
-<nav>
-<div style="background: linear-gradient(90deg,#385034 10%, #9dda93 100%); color: whitesmoke; font-family: 'haifont'; font-size: 20px; font-weight: bold; ">
-    <nav class="nav-scan">
-        <a href="https://eyeroom2web.netlify.app/services"><button type="button" class="btn btn-success" style="width: 100px;">Back</button></a>
-        <img src="./images/logo-eyeroom.png" style="width: 60px; margin-top: 5px; margin-bottom: 5px">Eyeroom</img>
-    </nav>
-    
-</div>
-</nav>
+    <nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(90deg,#385034 0%, #9dda93 100%); color: whitesmoke; font-family: 'haifont';font-size: 20px; font-weight: bold; ">
+        <div class="nav-scan">
+            <div class="logo">
+                <a href="https://eyeroome-web2.netlify.app/services"><button type="button" class="btn btn-outline-light" style="width: 100px;">Back</button></a>
+                <img src="./images/logo-eyeroom.png" style="width: 50px; margin-top: 5px; margin-bottom: 5px; color: whitesmoke; font-family: 'haifont';font-size: 30px; font-weight: bold;">Eyeroom</img>
+            </div>
+        </div>
+      </nav>
+
             
-<p style=" padding: 20px; font-family: 'haifont'; font-weight:lighter; font-size: 20px; text-align: center;">Ayok scan obatmu dengan klik tombol kamera dibawah!</p>
+<p style=" margin-top: 20px; margin-bottom: 20px; font-family: 'Montserrat'; font-weight:lighter; font-size: 20px; text-align: center;">Ayok scan obatmu dengan klik tombol kamera dibawah!</p>
 
 <button type="button" class="btn btn-outline-success" onclick="init()" style="display:block;margin-left:auto;margin-right:auto; margin-bottom:20px; width: 300px;"><img src="./images/photo-camera.png"></button>
 
-<div class="kam"><img src="./images/undraw_nature_on_screen_xkli (1).svg" style="width: 300px; display: block; margin-right: auto; margin-left: auto;"/>
+<div class="kam"><img src="./images/undraw_nature_on_screen_xkli.svg" style="width: 400px; display: block; margin-right: auto; margin-left: auto;"/>
 
 <div class="video_container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">
 <div id="webcam-container" style="background-color: white ;margin-top: 70px;"></div>
-<div id="label-container" style="background-color: #385034; font-family: 'haifont'; color: white; text-align: center;"></div>
+<div id="label-container" style="background-color: #385034; font-family: 'montserrat'; color: white; text-align: center;"></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
 <script type="text/javascript">
-    // More API functions here:
-    // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/image
 
-    // the link to your model provided by Teachable Machine export panel
     const URL = "./my-model/";
 
     let model, webcam, labelContainer, maxPredictions;
@@ -78,17 +75,24 @@
         const prediction = await model.predict(webcam.canvas);
         for (let i = 0; i < maxPredictions; i++) {
 
+
+            
+
             // const classPrediction =
             // prediction[i].className + " : " + prediction[i].probability.toFixed(2)+ '%';
 
             // labelContainer.childNodes[i].innerHTML = classPrediction;
-            if(prediction[i].probability>0.95){
-                document.getElementById('label-container').innerHTML = '<h3>'+ prediction[i].className + '</h3>' + prediction[i].probability.toFixed(2) * 100+ '%';
+            if(prediction[i].probability>0.90){
+                var musik = new Audio();
+                musik.src = "../audio/petunjuk-scan.mp3"
+                musik.loop = true;
+                musik.play();
+                document.getElementById('label-container').innerHTML = '<h3>'+ prediction[i].className + '</h3>' + prediction[i].probability.toFixed(2) * 100+ '%' + '<ul>' +'<a href="https://eyeroome-web2.netlify.app/coba">' + '<button type="button" class="btn btn-outline-light" style="width:100px; margin-bottom:20px; diplay: block; margin-left: auto; margin-right:25px; margin-top:5px;">' + "Cari Obat" + '</button>' + '</a>' + '</ul>';
                 labelContainer.childNodes[i].innerHTML = classPrediction;
                     }
-                }
+             }
             }
-           
+ 
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
@@ -99,27 +103,18 @@
     font-family: haifont;
     src: url(./Judul/TitanOne-Regular.ttf);
   }
-  #img1 {
-      font-family: 'haifont';
-      font-size: 2rem;
-  }
-  .btn-desc {
-      display: block;
-      justify-content: flex-end;
-      width: 400px;
-  }
-  .nav-scan img {
-        margin-left: 850px;
+  .logo img {
+        margin-left: 930px;
       }
-      .nav-scan a {
+      .logo a {
           margin-left: 100px;
       }
 
   @media screen and (max-width: 500px){
-      .nav-scan img {
+      .logo img {
           margin-left: 80px;
       }
-      .nav-scan a {
+      .logo a {
           margin-left: 10px;
       }
   }
