@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scanning</title>
+    <link rel="icon" href="./logo-eyeroom.png" />
+    <title>Eyeroom Web</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body style="background-color: #DDFFBC;">
     <nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(90deg,#385034 0%, #9dda93 100%); color: whitesmoke; font-family: 'haifont';font-size: 20px; font-weight: bold; ">
         <div class="nav-scan">
             <div class="logo">
-                <a href="https://eyeroome-web2.netlify.app/services"><button type="button" class="btn btn-outline-light" style="width: 100px;">Back</button></a>
+                <a href="https://eyeroomweb.netlify.app/services"><button type="button" class="btn btn-outline-light" style="width: 100px;">Back</button></a>
                 <img src="./images/logo-eyeroom.png" style="width: 50px; margin-top: 5px; margin-bottom: 5px; color: whitesmoke; font-family: 'haifont';font-size: 30px; font-weight: bold;">Eyeroom</img>
             </div>
         </div>
@@ -81,7 +82,7 @@
                 musik.src = "../audio/petunjuk-scan.mp3"
                 musik.loop = true;
                 musik.play();
-                document.getElementById('label-container').innerHTML = '<h3>'+ prediction[i].className + '</h3>' + prediction[i].probability.toFixed(2) * 100+ '%' + '<ul>' +'<a href="https://eyeroome-web2.netlify.app/coba">' + '<button type="button" class="btn btn-outline-light" style="width:100px; margin-bottom:20px; diplay: block; margin-left: auto; margin-right:25px; margin-top:5px;">' + "Cari Obat" + '</button>' + '</a>' + '</ul>';
+                document.getElementById('label-container').innerHTML = '<h3>'+ prediction[i].className + '</h3>' + prediction[i].probability.toFixed(2) * 100+ '%' + '<ul>' +'<a href="https://eyeroomweb.netlify.app/coba">' + '<button type="button" class="btn btn-outline-light" style="width:100px; margin-bottom:20px; diplay: block; margin-left: auto; margin-right:25px; margin-top:5px;">' + "Cari Obat" + '</button>' + '</a>' + '</ul>';
                 labelContainer.childNodes[i].innerHTML = classPrediction;
                     }
                 }
