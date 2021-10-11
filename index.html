@@ -18,11 +18,11 @@
       </nav>
 
             
-<p style=" margin-top: 20px; margin-bottom: 20px; font-family: 'Montserrat'; font-weight:lighter; font-size: 20px; text-align: center;">Ayok scan obatmu dengan klik tombol kamera dibawah!</p>
+<p style=" padding: 20px; font-family: 'haifont'; font-weight:lighter; font-size: 20px; text-align: center;">Ayok scan obatmu dengan klik tombol kamera dibawah!</p>
 
 <button type="button" class="btn btn-outline-success" onclick="init()" style="display:block;margin-left:auto;margin-right:auto; margin-bottom:20px; width: 300px;"><img src="./images/photo-camera.png"></button>
 
-<div class="kam"><img src="./images/undraw_nature_on_screen_xkli.svg" style="width: 400px; display: block; margin-right: auto; margin-left: auto;"/>
+<div class="kam"><img src="./images/undraw_nature_on_screen_xkli.svg"/>
 
 <div class="video_container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);">
 <div id="webcam-container" style="background-color: white ;margin-top: 70px;"></div>
@@ -75,12 +75,6 @@
         const prediction = await model.predict(webcam.canvas);
         for (let i = 0; i < maxPredictions; i++) {
 
-
-            
-
-            // const classPrediction =
-            // prediction[i].className + " : " + prediction[i].probability.toFixed(2)+ '%';
-
             // labelContainer.childNodes[i].innerHTML = classPrediction;
             if(prediction[i].probability>0.90){
                 var musik = new Audio();
@@ -90,7 +84,7 @@
                 document.getElementById('label-container').innerHTML = '<h3>'+ prediction[i].className + '</h3>' + prediction[i].probability.toFixed(2) * 100+ '%' + '<ul>' +'<a href="https://eyeroome-web2.netlify.app/coba">' + '<button type="button" class="btn btn-outline-light" style="width:100px; margin-bottom:20px; diplay: block; margin-left: auto; margin-right:25px; margin-top:5px;">' + "Cari Obat" + '</button>' + '</a>' + '</ul>';
                 labelContainer.childNodes[i].innerHTML = classPrediction;
                     }
-             }
+                }
             }
  
 </script>
@@ -103,6 +97,12 @@
     font-family: haifont;
     src: url(./Judul/TitanOne-Regular.ttf);
   }
+  .kam img {
+    width: 400px; 
+    display: block; 
+    margin-right: auto; 
+    margin-left: auto;
+  }
   .logo img {
         margin-left: 930px;
       }
@@ -111,12 +111,15 @@
       }
 
   @media screen and (max-width: 500px){
-      .logo img {
-          margin-left: 80px;
-      }
-      .logo a {
-          margin-left: 10px;
-      }
+    .kam img {
+        width: 280px; 
+    }  
+    .logo img {
+          margin-left: 90px;
+    }
+    .logo a {
+          margin-left: 20px;
+    }
   }
 </style>
 </html>
