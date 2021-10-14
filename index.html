@@ -13,7 +13,7 @@
         <div class="nav-scan">
             <div class="logo">
                 <a href="https://eyeroomweb.netlify.app/services"><button type="button" class="btn btn-outline-light" style="width: 100px;">Back</button></a>
-                <img src="./images/logo-eyeroom.png" style="width: 50px; margin-top: 5px; margin-bottom: 5px; color: whitesmoke; font-family: 'haifont';font-size: 30px; font-weight: bold;">Eyeroom</img>
+                <img src="./images/logo-eyeroom.png" style="width: 50px; margin-top: 5px; margin-bottom: 5px; color: whitesmoke; font-family: 'haifont';font-size: 30px; font-weight: bold;"></img>
             </div>
         </div>
       </nav>
@@ -80,7 +80,7 @@
             if(prediction[i].probability>0.90){
                 var musik = new Audio();
                 musik.src = "../audio/petunjuk-scan.mp3"
-                musik.loop = true;
+                musik.loop = false;
                 musik.play();
                 document.getElementById('label-container').innerHTML = '<h3>'+ prediction[i].className + '</h3>' + prediction[i].probability.toFixed(2) * 100+ '%' + '<ul>' +'<a href="https://eyeroomweb.netlify.app/coba">' + '<button type="button" class="btn btn-outline-light" style="width:100px; margin-bottom:20px; diplay: block; margin-left: auto; margin-right:25px; margin-top:5px;">' + "Cari Obat" + '</button>' + '</a>' + '</ul>';
                 labelContainer.childNodes[i].innerHTML = classPrediction;
